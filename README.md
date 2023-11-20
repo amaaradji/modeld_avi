@@ -17,7 +17,7 @@ To be able to run this, I recommend using Python 3.6 or up.
 1. Install the requirements 
 
 ```
-pip3 install -r requirements.txt
+pip3 install -r mini_requirement.txt
 ```
 This will install all the necessary dependencies for running this. 
 
