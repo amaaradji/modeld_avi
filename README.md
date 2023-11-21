@@ -12,7 +12,7 @@ pip3 install -r mini_requirement.txt
 ```
 This will install all the necessary dependencies for running this. 
 
-2. Run the program (make sure you edit the path to your video at line 62)
+2. Run the program (make sure you edit the path to your video at line 13 et 61)
 
 ``` 
 python3 main.py 
