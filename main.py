@@ -10,7 +10,7 @@ import cv2
 from tensorflow.keras.models import load_model
 from common.tools.lib.parser import parser
 import sys
-camerafile = "video.avi"
+camerafile = "GAT5_fog_rain.avi"
 supercombo = load_model('models/supercombo.keras')
 
 MAX_DISTANCE = 140.
@@ -39,8 +39,9 @@ def frame_to_tensorframe(frame):
 
 def vidframe2img_yuv_reshaped():
   ret, frame = cap.read()
+  height, width = frame.shape[:2]
   img_yuv = cv2.cvtColor(frame, cv2.COLOR_BGR2YUV_I420)
-  return frame, img_yuv.reshape((874*3//2, 1164))
+  return frame, img_yuv.reshape((height*3//2, width))
 
 def vidframe2frame_tensors():
   frame, img = vidframe2img_yuv_reshaped()
@@ -58,7 +59,7 @@ frame_tensors = np.zeros((NBFRAME,6,128,256))
 for i in tqdm(range(NBFRAME)):
     frame_tensors[i] = vidframe2frame_tensors()[1]
 
-cap2 = cv2.VideoCapture("video2.avi")
+cap2 = cv2.VideoCapture(camerafile)
 
 for i in tqdm(range(NBFRAME-1)):
   # if i == 0:
